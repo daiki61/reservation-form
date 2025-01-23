@@ -1,0 +1,23 @@
+.grid__shop_item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.shop_info {
+    padding: 16px;
+    text-align: center;
+}
+
+.shop_info img {
+    max-width: 100%;
+    height: auto;
+}
+
+.reservation_form {
+    padding: 16px;
+    text-align: center;
+
+}
