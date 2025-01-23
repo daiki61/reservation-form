@@ -1,0 +1,17 @@
+.done_body {
+    width: 400px;
+    height: 150px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.h2 {
+    text-align: center;
+    display: inline;
+}
+
+.return_button {
+    text-align: center;
+    background-color: blue;
+    color: white;
+}

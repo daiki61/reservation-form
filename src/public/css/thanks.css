@@ -1,0 +1,16 @@
+.thanks_body {
+    width: 400px;
+    height: 150px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.h2 {
+    text-align: center;
+}
+
+.login_button {
+    text-align: center;
+    background-color: blue;
+    color: white;
+}
