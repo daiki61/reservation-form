@@ -12,7 +12,7 @@
         <img src="{{ $shop->image }}" alt="{{ $shop->name }}の写真">
         <h1>
             <span>#{{ $shop->place }}</span>
-            <span>#{{ $shop->genre }}</span><br>{{ $shop->feature}}
+            <span>#{{ $shop->genre }}</span><br>{{ $shop->feature }}
         </h1>
     </div>
 
@@ -22,10 +22,11 @@
             @csrf
             <h2>予約</h2>
 
-            <input type="hidden" name="shop_id" value="{{ $shop->id }}">
             
+            <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+
             <label for="date"></label>
-            <input type="date" name="reservationDate" id="reservationDate" value="{{ old('reservationDate') }}" required>
+            <input type="date" name="reservationDate" id="reservationDate" value="{{ old('reservationDate') }}" min="{{ date('Y-m-d') }}" required>
 
             <label for="time"></label>
             <input type="time" name="reservationTime" id="reservationTime" value="{{ old('reservationTime') }}" required>
@@ -37,10 +38,10 @@
                 @endfor
             </select>
             <div class="reservation_detail">
-                <p>Shop: {{ session('name', '未入力') }}</p>
-                <p>Date: {{ session('date', '未入力') }}</p>
-                <p>Time: {{ session('time', '未入力' )}}</p>
-                <p>Number: {{ session('guests', '未入力') }}</p>
+                <p>Shop: {{ session('name', $shop->name) }}</p>
+                <p>Date: {{ session('date', $reservationDate ?? '') }}</p>
+                <p>Time: {{ session('time', $reservationTime ?? '') }}</p>
+                <p>Number: {{ session('guests', $i) }}</p>
             </div>
             <button class="reservation_button-submit" type="submit">予約する</button>
         </form>

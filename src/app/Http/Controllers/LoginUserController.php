@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\Reservation;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -16,7 +18,22 @@ class LoginUserController extends Controller
         return view('login');
     }
 
-    public function login(RegisterRequest $request){
+    public function login(LoginRequest $request){
+       
+        
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+        ]);
+
+        if (Auth::attempt($request->only('email', 'password'))) {
+     
+           
+            return redirect('/')->with('success', 'ログインに成功しました');
+            }
+            return back()->withErrors([
+            'email' => 'メールアドレスまたはパスワードが正しくありません。',
+        ])->withInput();
         
     }
 }

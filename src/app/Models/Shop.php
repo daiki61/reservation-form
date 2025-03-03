@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shop extends Model
 {
+    
+
     protected $table = 'shops';
     protected $fillable = ['name', 'place', 'genre', 'feature', 'image', 'shop_id'];
     protected $primaryKey = 'shop_id';
@@ -16,4 +18,5 @@ class Shop extends Model
     public function reservations(){
         return $this->hasMany(Reservation::class);
     }
+
 }

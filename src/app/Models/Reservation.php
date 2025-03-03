@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 
 class Reservation extends Model
@@ -15,7 +16,7 @@ class Reservation extends Model
     protected $keyType = 'string';
 
     protected $fillable = ['reservation_id', 'user_id', 'shop_id', 'reservationDate', 'reservationTime', 'reservationNum',];
-    protected $guarded = ['reservation_id', 'user_id',];
+ 
     //public static $rules = array(
         //'reservationDate' => 'required|date',
         //'reservationTime' => 'required',
@@ -38,5 +39,14 @@ class Reservation extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'uuid', 'uuid');
+    }
+
+    use HasFactory;
+    protected static function boot(){
+        parent::boot();
+
+        static::creating(function ($model) {
+            $model->reservation_id = (string) Str::uuid();
+        });
     }
 }

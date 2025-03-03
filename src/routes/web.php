@@ -21,15 +21,20 @@ Route::get('/', function () {
 });
 
 //Route::middleware('auth')->group(function () {
-    Route::get('/',[ShopController::class, 'shopall'])->name('shop.all');
+Route::get('/',[ShopController::class, 'shopall']);
 //});
 
-Route::get('/detail/{shop_id}',[ShopController::class, 'detail'])->name('shop.detail');
+Route::get('/detail/{shop_id}/',[ShopController::class, 'detail'])->name('shop.detail');
 //Route::post('/detail/{shop_id}',[ShopController::class, 'reservation'])->name('shop.info');
 //店舗詳細ページの入力内容の確認用Route::post('/shop/{shop_id}/detail', [ShopController::class, 'showDetails'])->name('shop.detail');
-Route::post('/reservation', [ShopController::class, 'store'])->name('reservation.shop');
-Route::get('/shops', [ShopController::class, 'index'])->name('shops.index');
+
+
+Route::post('/reservation/{shop_id}', [ShopController::class, 'store'])->name('reservation.shop');
+//Route::get('/shops', [ShopController::class, 'index'])->name('shops.index');
 Route::get('/done',[ShopController::class, 'done']);
+Route::get('/qform',[ShopController::class, 'form']);
+Route::get('/ser/shopall',[ShopController::class, 'index'])->name('ser.shopall');
+
 
 Route::get('/register',[RegisteredUserController::class, 'showRegistrationForm']);
 Route::post('/register',[RegisteredUserController::class, 'register']);

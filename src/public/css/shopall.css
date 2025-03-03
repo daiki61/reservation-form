@@ -1,3 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 30px;
+    background-color: white;
+    color: black;
+}
+
+.header-ttl {
+    font-size: 24px;
+    width: 80px;
+}
+
+.header-nav-list {
+    display: flex;
+    font-weight: bold;
+}
+
+.header-nav-item {
+    margin-right: 10px;
+}
+
+
+
+
+
 .grid__shoplist {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -8,9 +36,11 @@
 .shop_item {
     text-align: center;
     padding: 10px;
+
 }
 
 .shop_item img {
     max-width: 100%;
     height: auto;
+
 }
